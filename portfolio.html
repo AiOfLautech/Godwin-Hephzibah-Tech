@@ -1,0 +1,311 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Godwin Hephzibah| Tech</title>  <!-- SEO Meta Tags -->  <meta name="description" content="Professional portfolio of Godwin Hephzibah Tech- Full Stack Developer">
+  <meta name="keywords" content="Godwin Hephzibah, Developer, Portfolio, Web Development">
+  <meta name="author" content="Godwin Hephzibah">  <!-- Bootstrap -->  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">  <!-- Font Awesome -->  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">  <!-- Google Fonts -->  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">  <style>
+    :root {
+      --primary: #6a0dad;
+      --secondary: #00b4d8;
+      --dark-bg: linear-gradient(135deg, #1a1a1a, #2a2a50, #1e2a66);
+      --light-bg: #f0f2f5;
+      --text-dark: #ffffff;
+      --text-light: #1e293b;
+      --form-bg: #222222;
+      --form-text: #ffffff;
+      --input-bg: #333333;
+      --input-text: #ffffff;
+      --input-border: #555555;
+      --footer-bg: #000000;
+      --footer-text: #ffffff;
+      --nav-bg: rgba(0, 0, 0, 0.9);
+      --muted-color: #b0b7c0;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--dark-bg);
+      color: var(--text-dark);
+      transition: all 0.3s ease;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+    .light-mode {
+      background: var(--light-bg);
+      color: var(--text-light);
+      --form-bg: #ffffff;
+      --form-text: #1e293b;
+      --input-bg: #f8fafc;
+      --input-text: #1e293b;
+      --input-border: #d1d5db;
+      --footer-bg: #e2e8f0;
+      --footer-text: #1e293b;
+      --nav-bg: rgba(255,255,255,0.95);
+      --muted-color: #64748b;
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .section-anim {
+      opacity: 0;
+      transform: translateY(40px);
+      animation: fadeUp 0.8s ease forwards;
+    }
+    .navbar {
+      background: var(--nav-bg) !important;
+      backdrop-filter: blur(12px);
+      padding: 1rem 0;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    .navbar .nav-link { color: var(--text-dark) !important; }
+    .light-mode .navbar .nav-link { color: var(--text-light) !important; }
+    .nav-logo {
+      width: 50px; height: 50px;
+      border-radius: 50%; transition: transform 0.3s;
+    }
+    .nav-logo:hover { transform: scale(1.1); }
+    .nav-link { position: relative; margin: 0 1.5rem; font-weight: 500; transition: all 0.3s; }
+    .nav-link::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px; background: var(--primary); transition: width 0.3s; }
+    .nav-link:hover::after { width: 100%; }
+    .hero-section { min-height: 100vh; display: flex; align-items: center; padding-top: 80px; }
+    .typing-cursor { display: inline-block; width:2px; height:1em; background-color:currentColor; margin-left:2px; animation: blink 1s infinite; }
+    @keyframes blink { 0%,100%{opacity:1}50%{opacity:0} }
+    .skill-card, .card, .testimonial-card {
+      background: rgba(255,255,255,0.15);
+      border-radius: 15px; padding:2rem; transition: all 0.3s;
+      border:1px solid rgba(255,255,255,0.05);
+    }
+    .light-mode .skill-card, .light-mode .card, .light-mode .testimonial-card {
+      background: #fff; box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      border:1px solid #e5e7eb;
+    }
+    .skill-card:hover, .card:hover, .testimonial-card:hover { transform: translateY(-10px) scale(1.02); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+    .testimonial-scroll { display:flex; overflow-x:auto; scroll-behavior:smooth; padding:2rem 0; gap:2rem; }
+    .testimonial-card::before { content:"\f10d"; font-family:"Font Awesome 5 Free"; position:absolute; top:20px; left:20px; font-size:2rem; opacity:0.3; }
+    .text-muted { color: var(--muted-color) !important; }
+    #projects .card-img-top { object-fit: cover; width: 100%; height: 200px; border-bottom: 4px solid var(--primary); transition: transform 0.3s; }
+    #projects .card:hover .card-img-top { transform: scale(1.05); }
+    .contact-form { background: var(--form-bg); color: var(--form-text); border-radius:15px; box-shadow:0 10px 20px rgba(0,0,0,0.2); }
+    .contact-form .form-control { background: var(--input-bg); color: var(--input-text); border:1px solid var(--input-border); border-radius:8px; transition: all 0.3s; }
+    .contact-form .form-control:focus { border-color: var(--primary); box-shadow: 0 0 0 0.2rem rgba(106,13,173,0.25); }
+    footer { background: var(--footer-bg); color: var(--footer-text); }
+    .social-links a { color: var(--footer-text); transition: all 0.3s; }
+    .social-links a:hover { color: var(--primary); transform: scale(1.2); }
+    ::-webkit-scrollbar { width:8px; height:8px; }
+    ::-webkit-scrollbar-thumb { background: var(--primary); border-radius:10px; }
+    .section-header { font-size:2.5rem; font-weight:700; margin-bottom:3rem; position:relative; display:inline-block; }
+    .section-header::after { content:''; position:absolute; bottom:-10px; left:0; width:60%; height:3px; background:var(--primary); transition: width 0.3s; }
+    .theme-switch { width:45px; height:45px; border-radius:50%; display:flex; align-items:center; justify-content:center; cursor:pointer; background:var(--primary); transition: transform 0.3s; }
+    .theme-switch:hover { transform: rotate(180deg); }
+    @media(max-width:768px) { .hero-section img { max-width:300px; } .nav-link { margin:0.5rem 0; } .testimonial-card { flex:0 0 300px; } }
+  </style></head>
+<body>  <!-- Navigation -->  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <img src="https://files.catbox.moe/0oaths.jpeg" alt="Logo" class="nav-logo">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button><div class="d-flex align-items-center gap-3">
+    <div class="theme-switch" onclick="toggleTheme()">
+      <i class="fas fa-moon text-white"></i>
+    </div>
+  </div>
+
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ms-auto">
+      <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+      <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+      <li class="nav-item"><a class="nav-link" href="#testimonials">Testimonials</a></li>
+      <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</div>
+
+  </nav>  <!-- Hero Section -->  <section class="hero-section section-anim" style="animation-delay: 0s;">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6">
+          <h1 class="display-3 fw-bold">David Cyril</h1>
+          <p class="lead"><span id="typing-text"></span><span class="typing-cursor">|</span></p>
+          <p id="description">Godwin Hephzibah is a passionate Full Stack Developer with expertise in building scalable web applications. With a keen eye for detail and a love for clean code, he strives to deliver exceptional user experiences and also a self learned developer.</p>
+          <div class="d-flex gap-3">
+            <a href="#contact" class="btn btn-primary btn-lg px-4 py-3">Hire Me</a>
+            <a href="https://files.catbox.moe/resume.pdf" download class="btn btn-outline-light btn-lg px-4 py-3">Download CV</a>
+          </div>
+        </div>
+        <div class="col-lg-6 text-center">
+          <img src="https://files.catbox.moe/0oaths.jpeg" alt="Profile" class="img-fluid rounded-circle shadow-lg" style="max-width:400px; border:4px solid var(--primary)">
+        </div>
+      </div>
+    </div>
+  </section>  <!-- Skills Section -->  <section id="skills" class="py-5 section-anim" style="animation-delay: 0.3s;">
+    <div class="container">
+      <h2 class="section-header">Technical Skills</h2>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="skill-card text-center">
+            <i class="fab fa-html5 fa-3x text-danger mb-3"></i>
+            <h4>HTML5</h4>
+            <p>Semantic markup, accessibility, modern APIs</p>
+            <div class="progress mt-3">
+              <div class="progress-bar bg-danger" style="width:95%">95%</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="skill-card text-center">
+            <i class="fab fa-css3-alt fa-3x text-primary mb-3"></i>
+            <h4>CSS3</h4>
+            <p>Flexbox, Grid, animations, responsive design</p>
+            <div class="progress mt-3">
+              <div class="progress-bar bg-primary" style="width:90%">90%</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="skill-card text-center">
+            <i class="fab fa-js-square fa-3x text-warning mb-3"></i>
+            <h4>JavaScript</h4>
+            <p> Node.js,</p>
+            <div class="progress mt-3">
+              <div class="progress-bar bg-warning" style="width:6https://files.catbox.moe/jl403b.jpg8%">68%</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>  <!-- Projects Section -->  <section id="projects" class="py-5 section-anim" style="animation-delay: 0.6s;">
+    <div class="container">
+      <h2 class="section-header">Featured Projects</h2>
+      <div class="row g-4">
+        <div class="col-md-3">
+          <div class="card h-100 shadow-lg">
+            <img src="https://files.catbox.moe/7u5no2.jpg" class="card-img-top" alt="Aitoolshub">
+            <div class="card-body">
+              <h5 class="card-title">AI Tools Hub</h5>
+              <p class="card-text">Make Yourself Comfortable With Reliable APIs Solution</p>
+              <a href="https://tiktok.david-cyril.net.ng" class="btn btn-primary">View Project</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card h-100 shadow-lg">
+            <img src="https://files.catbox.moe/0oaths.jpeg" class="card-img-top" alt="Portfolio Site">
+            <div class="card-body">
+              <h5 class="card-title">Portfolio Site</h5>
+              <p class="card-text">Dynamic portfolio with animations and responsive design</p>
+              <a href="#" class="btn btn-primary">View Project</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card h-100 shadow-lg">
+            <img src="https://files.catbox.moe/jl403b.jpg" class="card-img-top" alt="Telegram Bot (CineMind)">
+            <div class="card-body">
+              <h5 class="card-title">CineMind</h5>
+              <p class="card-text">Efficient task management bot for personal and business needs</p>
+              <a href="https://t.me/CineMindBot" class="btn btn-primary">View Bot</a>
+              <a href=""class="btn btn-primary">View Website</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card h-100 shadow-lg">
+            <img src="https://files.catbox.moe/zxc2su.jpg" class="card-img-top" alt="WhatsApp Bot (Queen AI)">
+            <div class="card-body">
+              <h5 class="card-title">WhatsApp Bot (Queen AI)</h5>
+              <p class="card-text">Efficient task management bot for personal and business needs</p>
+              <a href="https://github.com/AiOfLautech/Queen-AI" class="btn btn-primary">View Project</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="text-center mt-4">
+        <a href="https://whatsapp.com/channel/0029VaXKAEoKmCPS6Jz7sw0N" class="btn btn-primary btn-lg">View All Projects</a>
+      </div>
+    </div>
+  </section>  <!-- Testimonials Section -->  <section id="testimonials" class="py-5 section-anim" style="animation-delay: 0.9s;">
+    <div class="container">
+      <h2 class="section-header">Client Testimonials</h2>
+      <div class="testimonial-scroll">
+        <div class="testimonial-card position-relative">
+          <div class="text-center mb-3">
+            <i class="fas fa-user-tie fa-3x text-primary"></i>
+          </div>
+          <h5>Beyond Tech</h5>
+          <p class="text-muted mb-2">CEO, Beyond Community</p>
+          <p>"Godwin delivered exceptional results beyond our expectations. Highly recommended!"</p>
+        </div>
+        <div class="testimonial-card position-relative">
+          <div class="text-center mb-3">
+            <i class="fas fa-user-graduate fa-3x text-primary"></i>
+          </div>
+          <h5>Sarah Johnson</h5>
+          <p class="text-muted mb-2">CTO, Digital Solutions</p>
+          <p>"Reliable and professional. Consistently delivers high-quality work ahead of schedule."</p>
+        </div>
+<div class="testimonial-card position-relative">
+          <div class="text-center mb-3">
+            <i class="fas fa-user fa-3x text-primary"></i>
+          </div>
+          <h5>David Cryil</h5>
+          <p class="text-muted mb-2">Founder, David Cryil Tech</p>
+          <p>"Creative. Turned vision into a stunning reality And Capable To Deobfuscated Any The Worlds Needs People Like You"</p>
+        </div>
+      <div class="testimonial-card position-relative">
+          <div class="text-center mb-3">
+            <i class="fas fa-user fa-3x text-primary"></i>
+          </div>
+          <h5>Mike Lee</h5>
+          <p class="text-muted mb-2">Founder, Startup Inc</p>
+          <p>"Creative and skilled. Turned our vision into a stunning reality."</p>
+        </div>
+      </div>
+      <div class="text-center mt-4">
+        <button class="btn btn-primary mx-2" onclick="scrollTestimonials(-300)"><i class="fas fa-chevron-left"></i></button>
+        <button class="btn btn-primary mx-2" onclick="scrollTestimonials(300)"><i class="fas fa-chevron-right"></i></button>
+      </div>
+    </div>
+  </section>  <!-- Contact Section -->  <section id="contact" class="py-5 section-anim" style="animation-delay: 1.2s;">
+    <div class="container">
+      <h2 class="section-header text-center">Get In Touch</h2>
+      <div class="row justify-content-center">
+        <div class="col-lg-6">
+          <form action="https://support.david-cyril.net.ng" method="get" class="p-4 rounded contact-form">
+            <div class="mb-3"><input type="text" class="form-control" placeholder="Your Name" required></div>
+            <div class="mb-3"><input type="email" class="form-control" placeholder="Your Email" required></div>
+            <div class="mb-3"><textarea class="form-control" rows="5" placeholder="Your Message" required></textarea></div>
+            <button type="submit" class="btn btn-primary w-100">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>  <!-- Footer -->  <footer class="py-4">
+    <div class="container text-center">
+      <div class="social-links mb-3">
+        <a href="https://github.com/AiOfLautech" class="mx-3"><i class="fab fa-github fa-2x"></i></a>
+        <a href="https://www.linkedin.com" class="mx-3"><i class="fab fa-linkedin fa-2x"></i></a>
+        <a href="mailto: godwinhephzibah25@gmail.com" class="mx-3"><i class="fas fa-envelope fa-2x"></i></a>
+        <a href="https://wa.me/+2347049283499" class="mx-3"><i class="fab fa-whatsapp fa-2x"></i></a>
+      </div>
+      <p class="mb-0">© 2025 Godwin Hephzibah. All rights reserved.</p>
+    </div>
+  </footer>  <!-- Scripts -->  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const text = "Full Stack Developer & Technical Consultant";
+      const typingEl = document.getElementById('typing-text'); let i=0;
+      function type() { if (i<text.length) { typingEl.innerHTML+=text.charAt(i++); setTimeout(type,100);} }
+      type();
+    });
+    function scrollTestimonials(offset) { document.querySelector('.testimonial-scroll').scrollBy({ left: offset, behavior: 'smooth' }); }
+    function toggleTheme(){ document.body.classList.toggle('light-mode'); const icon=document.querySelector('.theme-switch i'); const nav=document.querySelector('.navbar');
+      if(document.body.classList.contains('light-mode')){ icon.classList.replace('fa-moon','fa-sun'); nav.classList.replace('navbar-dark','navbar-light'); localStorage.setItem('theme','light'); }
+      else { icon.classList.replace('fa-sun','fa-moon'); nav.classList.replace('navbar-light','navbar-dark'); localStorage.setItem('theme','dark'); }
+    }
+    document.addEventListener('DOMContentLoaded',()=>{ const saved=localStorage.getItem('theme'); const icon=document.querySelector('.theme-switch i'); const nav=document.querySelector('.navbar');
+      if(saved==='light'){ document.body.classList.add('light-mode'); icon.classList.replace('fa-moon','fa-sun'); nav.classList.replace('navbar-dark','navbar-light'); } else { nav.classList.add('navbar-dark'); }
+    });
+  </script></body>
+</html>
